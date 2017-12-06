@@ -1,0 +1,12 @@
+version: '2'
+services:
+    oauth2_sql_server-app:
+        image: oauth2_sql_server
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:sqlserver://oauth2_sql_server-mssql:1433;database=jhitest
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+    oauth2_sql_server-mssql:
+        extends:
+            file: mssql.yml
+            service: oauth2_sql_server-mssql
